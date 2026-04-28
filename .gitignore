@@ -1,0 +1,99 @@
+# =========================
+# Java / Maven
+# =========================
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven wrapper cache
+.mvn/wrapper/maven-wrapper.jar
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python build output
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Playwright
+# =========================
+playwright-report/
+test-results/
+
+# =========================
+# Allure Reports
+# =========================
+allure-results/
+allure-report/
+target/allure-results/
+target/site/allure-maven-plugin/
+
+# =========================
+# Screenshots / Runtime Output
+# =========================
+screenshots/
+target/screenshots/
+logs/
+downloads/
+reports/
+
+# Keep documentation screenshots
+!docs/
+!docs/images/
+!docs/images/**
+
+# =========================
+# IDE / Editor
+# =========================
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+*.local
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.temp
+*.log

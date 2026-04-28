@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-Allure Report</actionName>
+            <displayName>Allure Report</displayName>
+            <preAction>build-with-dependencies</preAction>
+            <goals>
+                <goal>allure:serve</goal>
+                
+                
+            </goals>
+        </action>
+        <action>
+            <actionName>rebuild</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>allure:serve</goal>
+            </goals>
+        </action>
+    </actions>
