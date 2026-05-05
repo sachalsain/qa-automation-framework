@@ -33,11 +33,12 @@ A generated sample showing a Herokuapp A/B Testing page beside a passing Java Pl
 
 ## Frameworks Included
 
-|		Framework		|	Language	|				Tooling							|						Best For						|
-|-----------------------|---------------|-----------------------------------------------|-------------------------------------------------------|
-|	Java Playwright		|	Java		|	Playwright, TestNG, Maven, Allure			|	Enterprise-style Playwright UI automation			|
-|	Python Playwright	|	Python		|	Playwright, Pytest, Allure					|	Fast and lightweight Playwright automation			|
-|	Selenium Framework	|	Java		|	Selenium WebDriver, TestNG, Maven, Allure	|	Selenium WebDriver and legacy automation support	|
+| Framework | Language | Tooling | Best For |
+|-----------|----------|---------|----------|
+| Java Playwright | Java | Playwright, TestNG, Maven, Allure | Enterprise-style Playwright UI automation |
+| Python Playwright | Python | Playwright, Pytest, Allure | Fast and lightweight Playwright automation |
+| Python Playwright Enterprise | Python | Playwright, Pytest, PyYAML, Allure | Enterprise-style OrangeHRM business workflow automation |
+| Selenium Framework | Java | Selenium WebDriver, TestNG, Maven, Allure | Selenium WebDriver and legacy automation support |
 
 ## Repository Structure
 
@@ -54,7 +55,17 @@ qa-automation-framework
 │   ├── pytest.ini
 │   ├── conftest.py
 │   └── src
-├── selenium-framework
+├── python-playwright-enterprise-framework
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── pytest.ini
+│   ├── conftest.py
+│   ├── config
+│   ├── pages
+│   ├── tests
+│   ├── test_data
+│   └── utils
+├── java-selenium
 │   ├── README.md
 │   ├── pom.xml
 │   ├── testng.xml
@@ -77,6 +88,7 @@ qa-automation-framework
 - Excel and CSV utility support
 - Logging support
 - File upload and download test coverage
+- OrangeHRM business workflow automation
 - CI/CD-ready project structure
 
 ## Project 1: Java Playwright Framework
@@ -173,12 +185,77 @@ More details:
 python-playwright/README.md
 ```
 
-## Project 3: Selenium Java Framework
+## Project 3: Python Playwright Enterprise Framework
 
 Location:
 
 ```text
-selenium-framework
+python-playwright-enterprise-framework
+```
+
+This framework demonstrates enterprise-style browser automation using Playwright with Python, Pytest, PyYAML configuration, environment-based credentials, and Allure reporting.
+
+The framework targets the OrangeHRM demo application:
+
+```text
+https://opensource-demo.orangehrmlive.com/
+```
+
+Main highlights:
+
+- Playwright Python
+- Pytest test execution
+- Page Object Model
+- OrangeHRM business workflow automation
+- Login, Dashboard, Admin, and PIM module coverage
+- Data-driven testing using JSON
+- YAML-based configuration
+- Environment-based credential management with `.env`
+- Pytest markers for smoke, regression, login, admin, and PIM tests
+- Parallel execution with `pytest-xdist`
+- Screenshot capture on failure
+- Playwright trace recording
+- Allure reporting
+- Reusable utility layer for config, data, logging, and screenshots
+
+Run tests:
+
+```bash
+cd python-playwright-enterprise-framework
+pytest
+```
+
+Run smoke tests:
+
+```bash
+pytest -m smoke
+```
+
+Run tests in parallel:
+
+```bash
+pytest -n 2
+```
+
+Generate Allure report:
+
+```bash
+pytest --alluredir=reports/allure-results
+allure serve reports/allure-results
+```
+
+More details:
+
+```text
+python-playwright-enterprise-framework/README.md
+```
+
+## Project 4: Selenium Java Framework
+
+Location:
+
+```text
+java-selenium
 ```
 
 This framework demonstrates browser automation using Selenium WebDriver with Java, TestNG, Maven, and Allure reporting.
@@ -201,7 +278,7 @@ Main highlights:
 Run tests:
 
 ```bash
-cd selenium-framework
+cd java-selenium
 mvn test
 ```
 
@@ -214,7 +291,7 @@ mvn allure:serve
 More details:
 
 ```text
-selenium-framework/README.md
+java-selenium/README.md
 ```
 
 ## Use Cases
@@ -254,6 +331,9 @@ The frameworks include examples for common web automation scenarios such as:
 - Geolocation
 - Shadow DOM
 - Redirects
+- OrangeHRM login workflows
+- OrangeHRM Admin user search
+- OrangeHRM PIM employee management
 
 ## Reporting
 
@@ -276,10 +356,17 @@ Example report command for Java-based frameworks:
 mvn allure:serve
 ```
 
-Example report command for the Python framework:
+Example report command for the standard Python framework:
 
 ```bash
 allure serve allure-results
+```
+
+Example report command for the enterprise Python framework:
+
+```bash
+pytest --alluredir=reports/allure-results
+allure serve reports/allure-results
 ```
 
 ## Screenshots
@@ -291,7 +378,8 @@ Typical screenshot locations:
 ```text
 java-playwright/target/screenshots
 python-playwright/screenshots/dev
-selenium-framework/target/screenshots
+python-playwright-enterprise-framework/reports/screenshots
+java-selenium/target/screenshots
 ```
 
 Screenshots help with:
@@ -321,7 +409,8 @@ Configuration files:
 ```text
 java-playwright/src/test/resources/configuration.properties
 python-playwright/src/configurations/dev.json
-selenium-framework/src/main/resources/configuration.properties
+python-playwright-enterprise-framework/config/config.yaml
+java-selenium/src/main/resources/configuration.properties
 ```
 
 ## Parallel Execution
@@ -334,10 +423,16 @@ Java Playwright and Selenium use TestNG suite configuration:
 <suite name="QA-Automation-Suite" parallel="methods" thread-count="2">
 ```
 
-Python Playwright uses `pytest-xdist`:
+Python Playwright frameworks use `pytest-xdist`:
 
 ```bash
 pytest -n auto
+```
+
+The enterprise Python framework can also run with an explicit worker count:
+
+```bash
+pytest -n 2
 ```
 
 ## Retry Logic
@@ -386,7 +481,7 @@ Typical CI/CD workflow:
 |	Test Frameworks		|	TestNG, Pytest								|
 |	Build Tools			|	Maven, pip									|
 |	Reporting			|	Allure										|
-|	Data Handling		|	JSON, Excel, CSV							|
+|	Data Handling		|	JSON, Excel, CSV, YAML						|
 |	Logging				|	SLF4J, Logback, Python logging				|
 |	Parallel Execution	|	TestNG, pytest-xdist						|
 |	Retry Logic			|	TestNG IRetryAnalyzer, pytest-rerunfailures |
@@ -471,10 +566,11 @@ Recommended review order:
 1. Start with this main README
 2. Open java-playwright/README.md
 3. Open python-playwright/README.md
-4. Open selenium-framework/README.md
-5. Review framework structure and test examples
-6. Run one framework locally
-7. Generate Allure report
+4. Open python-playwright-enterprise-framework/README.md
+5. Open java-selenium/README.md
+6. Review framework structure and test examples
+7. Run one framework locally
+8. Generate Allure report
 ```
 
 ## Contact
