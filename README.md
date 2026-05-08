@@ -1,16 +1,17 @@
 # QA Automation Framework Portfolio
 
-A professional QA automation portfolio demonstrating reusable test automation frameworks built with Playwright, Selenium, Java, Python, TestNG, Pytest, Maven, and Allure reporting.
+A professional QA automation portfolio demonstrating reusable UI and API test automation frameworks built with Playwright, Selenium, Java, Python, TestNG, Pytest, Maven, and Allure reporting.
 
 This repository is designed to show how automated testing can help teams reduce regression bugs, validate critical user flows, and improve release confidence through maintainable test automation systems.
 
 ## Problem This Solves
 
-Modern web applications change frequently. Without automated regression testing, teams risk shipping broken login flows, unstable UI behavior, failed form submissions, broken navigation, and other production issues.
+Modern web applications and APIs change frequently. Without automated regression testing, teams risk shipping broken login flows, unstable UI behavior, failed form submissions, broken navigation, API contract regressions, and other production issues.
 
 This portfolio demonstrates automation frameworks that help teams:
 
 - Validate critical user journeys before release
+- Validate API contracts and response behavior
 - Reduce repetitive manual regression testing
 - Detect failures earlier in the development cycle
 - Capture screenshots and reports for faster debugging
@@ -38,39 +39,49 @@ A generated sample showing a Herokuapp A/B Testing page beside a passing Java Pl
 | Java Playwright | Java | Playwright, TestNG, Maven, Allure | Enterprise-style Playwright UI automation |
 | Python Playwright | Python | Playwright, Pytest, Allure | Fast and lightweight Playwright automation |
 | Python Playwright Enterprise | Python | Playwright, Pytest, PyYAML, Allure | Enterprise-style OrangeHRM business workflow automation |
+| Python Playwright API | Python | Playwright API, Pytest, Allure | REST API automation with request and response evidence |
 | Selenium Framework | Java | Selenium WebDriver, TestNG, Maven, Allure | Selenium WebDriver and legacy automation support |
 
 ## Repository Structure
 
 ```text
 qa-automation-framework
-├── java-playwright
-│   ├── README.md
-│   ├── pom.xml
-│   ├── testng.xml
-│   └── src
-├── python-playwright
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── pytest.ini
-│   ├── conftest.py
-│   └── src
-├── python-playwright-enterprise-framework
-│   ├── README.md
-│   ├── requirements.txt
-│   ├── pytest.ini
-│   ├── conftest.py
-│   ├── config
-│   ├── pages
-│   ├── tests
-│   ├── test_data
-│   └── utils
-├── java-selenium
-│   ├── README.md
-│   ├── pom.xml
-│   ├── testng.xml
-│   └── src
-└── README.md
+|-- java-playwright
+|   |-- README.md
+|   |-- pom.xml
+|   |-- testng.xml
+|   `-- src
+|-- python-playwright
+|   |-- README.md
+|   |-- requirements.txt
+|   |-- pytest.ini
+|   |-- conftest.py
+|   `-- src
+|-- python-playwright-enterprise-framework
+|   |-- README.md
+|   |-- requirements.txt
+|   |-- pytest.ini
+|   |-- conftest.py
+|   |-- config
+|   |-- pages
+|   |-- tests
+|   |-- test_data
+|   `-- utils
+|-- python_playwright_api_framework
+|   |-- README.md
+|   |-- requirements.txt
+|   |-- pytest.ini
+|   |-- conftest.py
+|   |-- configurations
+|   |-- services
+|   |-- tests
+|   `-- utilities
+|-- java-selenium
+|   |-- README.md
+|   |-- pom.xml
+|   |-- testng.xml
+|   `-- src
+`-- README.md
 ```
 
 ## Key Features
@@ -89,6 +100,8 @@ qa-automation-framework
 - Logging support
 - File upload and download test coverage
 - OrangeHRM business workflow automation
+- REST API automation with Playwright request contexts
+- API request and response evidence in Allure reports
 - CI/CD-ready project structure
 
 ## Project 1: Java Playwright Framework
@@ -250,7 +263,69 @@ More details:
 python-playwright-enterprise-framework/README.md
 ```
 
-## Project 4: Selenium Java Framework
+## Project 4: Python Playwright API Framework
+
+Location:
+
+```text
+python_playwright_api_framework
+```
+
+This framework demonstrates REST API automation using Playwright API testing with Python, Pytest, JSON configuration, and Allure reporting.
+
+The framework targets the ReqRes demo API:
+
+```text
+https://reqres.in
+```
+
+Main highlights:
+
+- Playwright API testing
+- Pytest test execution
+- Service-layer API client structure
+- ReqRes user management endpoint coverage
+- JSON-based environment configuration
+- Environment selection with `--env`
+- Pytest markers for smoke, regression, and users tests
+- Parallel execution with `pytest-xdist`
+- Allure reporting
+- Request and response attachments in Allure reports
+- Reusable utility layer for config and logging
+
+Run tests:
+
+```bash
+cd python_playwright_api_framework
+pytest
+```
+
+Run smoke tests:
+
+```bash
+pytest -m smoke
+```
+
+Run tests in parallel:
+
+```bash
+pytest -n 2
+```
+
+Generate Allure report:
+
+```bash
+pytest --alluredir=reports/allure-results
+allure serve reports/allure-results
+```
+
+More details:
+
+```text
+python_playwright_api_framework/README.md
+```
+
+## Project 5: Selenium Java Framework
 
 Location:
 
@@ -305,6 +380,7 @@ These frameworks are suitable for:
 - Selenium teams planning to adopt Playwright
 - Freelance QA automation project demonstrations
 - CI/CD pipeline test execution
+- API test automation and service contract validation
 - Proof-of-concept automation frameworks
 
 ## Test Coverage Examples
@@ -334,6 +410,8 @@ The frameworks include examples for common web automation scenarios such as:
 - OrangeHRM login workflows
 - OrangeHRM Admin user search
 - OrangeHRM PIM employee management
+- ReqRes user API list, create, update, and delete flows
+- API response status, schema, and contract validation
 
 ## Reporting
 
@@ -344,6 +422,7 @@ Reports can include:
 - Passed test cases
 - Failed test cases
 - Skipped test cases
+- API request and response attachments
 - Failure screenshots
 - Error logs
 - Test execution timeline
@@ -369,9 +448,17 @@ pytest --alluredir=reports/allure-results
 allure serve reports/allure-results
 ```
 
+Example report command for the Python API framework:
+
+```bash
+cd python_playwright_api_framework
+pytest --alluredir=reports/allure-results
+allure serve reports/allure-results
+```
+
 ## Screenshots
 
-Failure screenshots are captured automatically when tests fail.
+Failure screenshots are captured automatically in UI frameworks when tests fail. The API framework also has a screenshot folder configured for future Playwright UI tests that use a `page` fixture.
 
 Typical screenshot locations:
 
@@ -379,6 +466,7 @@ Typical screenshot locations:
 java-playwright/target/screenshots
 python-playwright/screenshots/dev
 python-playwright-enterprise-framework/reports/screenshots
+python_playwright_api_framework/screenshots/dev
 java-selenium/target/screenshots
 ```
 
@@ -402,6 +490,7 @@ Common configurable items include:
 - Retry count
 - Screenshot path
 - Test data path
+- API key or service credentials when required
 - Environment settings
 
 Configuration files:
@@ -410,6 +499,7 @@ Configuration files:
 java-playwright/src/test/resources/configuration.properties
 python-playwright/src/configurations/dev.json
 python-playwright-enterprise-framework/config/config.yaml
+python_playwright_api_framework/configurations/dev.json
 java-selenium/src/main/resources/configuration.properties
 ```
 
@@ -435,6 +525,13 @@ The enterprise Python framework can also run with an explicit worker count:
 pytest -n 2
 ```
 
+The Python API framework also supports `pytest-xdist`:
+
+```bash
+cd python_playwright_api_framework
+pytest -n 2
+```
+
 ## Retry Logic
 
 Retry logic is included to reduce the impact of temporary test instability.
@@ -445,7 +542,7 @@ Java-based frameworks use TestNG retry analyzers:
 RetryAnalyzer.java
 ```
 
-Python uses `pytest-rerunfailures`:
+The standard Python Playwright framework uses `pytest-rerunfailures`:
 
 ```ini
 --reruns 1 --reruns-delay 2
@@ -477,6 +574,7 @@ Typical CI/CD workflow:
 |		  Area  		|					Tools						|
 |-----------------------|-----------------------------------------------|
 |	Browser Automation	|	Playwright, Selenium WebDriver				|
+|	API Automation		|	Playwright API testing						|
 |	Languages			|	Java, Python								|
 |	Test Frameworks		|	TestNG, Pytest								|
 |	Build Tools			|	Maven, pip									|
@@ -503,11 +601,12 @@ The focus is on:
 
 ## Service Offer
 
-I help teams set up scalable QA automation frameworks using Playwright, Selenium, Java, and Python.
+I help teams set up scalable UI and API QA automation frameworks using Playwright, Selenium, Java, and Python.
 
 Services include:
 
 - UI automation framework setup
+- API automation framework setup
 - Smoke and regression test suite creation
 - Selenium to Playwright migration
 - Flaky test fixes
@@ -567,10 +666,11 @@ Recommended review order:
 2. Open java-playwright/README.md
 3. Open python-playwright/README.md
 4. Open python-playwright-enterprise-framework/README.md
-5. Open java-selenium/README.md
-6. Review framework structure and test examples
-7. Run one framework locally
-8. Generate Allure report
+5. Open python_playwright_api_framework/README.md
+6. Open java-selenium/README.md
+7. Review framework structure and test examples
+8. Run one framework locally
+9. Generate Allure report
 ```
 
 ## Contact
@@ -579,6 +679,7 @@ Available for QA automation projects involving:
 
 - Playwright automation
 - Selenium automation
+- API automation
 - Test automation framework setup
 - CI/CD test integration
 - Regression suite creation

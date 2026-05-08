@@ -14,7 +14,7 @@ from src.utilities.logger import get_logger
 from src.utilities.path_loader import load_screenshots_dir
 # from src.utilities.path_loader import load_screenshots_dir
 
-logger = get_logger(__name__)
+logger = get_logger("Test Configuration and Fixtures.")
 
 
 #   Add a custom CLI argument to pytest
