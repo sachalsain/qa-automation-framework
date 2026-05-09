@@ -37,6 +37,7 @@ A generated sample showing a Herokuapp A/B Testing page beside a passing Java Pl
 | Framework | Language | Tooling | Best For |
 |-----------|----------|---------|----------|
 | Java Playwright | Java | Playwright, TestNG, Maven, Allure | Enterprise-style Playwright UI automation |
+| JavaScript Playwright | JavaScript | Playwright Test, npm, Allure | Modern Playwright UI automation with JavaScript |
 | Python Playwright | Python | Playwright, Pytest, Allure | Fast and lightweight Playwright automation |
 | Python Playwright Enterprise | Python | Playwright, Pytest, PyYAML, Allure | Enterprise-style OrangeHRM business workflow automation |
 | Python Playwright API | Python | Playwright API, Pytest, Allure | REST API automation with request and response evidence |
@@ -51,6 +52,14 @@ qa-automation-framework
 |   |-- pom.xml
 |   |-- testng.xml
 |   `-- src
+|-- javascript-playwright
+|   |-- README.md
+|   |-- package.json
+|   |-- playwright.config.js
+|   |-- src
+|   |-- tests
+|   |-- data
+|   `-- uploads
 |-- python-playwright
 |   |-- README.md
 |   |-- requirements.txt
@@ -148,7 +157,59 @@ More details:
 java-playwright/README.md
 ```
 
-## Project 2: Python Playwright Framework
+## Project 2: JavaScript Playwright Framework
+
+Location:
+
+```text
+javascript-playwright
+```
+
+This framework demonstrates browser automation using Playwright with JavaScript, Playwright Test, npm, and Allure reporting.
+
+Main highlights:
+
+- Playwright JavaScript
+- Playwright Test execution
+- npm dependency management
+- Page Object Model
+- Environment-based JSON configuration
+- Reusable fixtures for authenticated, cross-browser, and geolocation scenarios
+- Parallel execution through Playwright Test
+- Retry logic through Playwright configuration
+- Screenshot and trace capture on failure
+- Playwright HTML reports
+- Allure reporting
+- JSON test data support
+- File upload and download support
+- Custom logging utilities
+
+Run tests:
+
+```bash
+cd javascript-playwright
+npm test
+```
+
+List discovered tests:
+
+```bash
+npm test -- --list
+```
+
+Generate Playwright report:
+
+```bash
+npm run report
+```
+
+More details:
+
+```text
+javascript-playwright/README.md
+```
+
+## Project 3: Python Playwright Framework
 
 Location:
 
@@ -198,7 +259,7 @@ More details:
 python-playwright/README.md
 ```
 
-## Project 3: Python Playwright Enterprise Framework
+## Project 4: Python Playwright Enterprise Framework
 
 Location:
 
@@ -263,7 +324,7 @@ More details:
 python-playwright-enterprise-framework/README.md
 ```
 
-## Project 4: Python Playwright API Framework
+## Project 5: Python Playwright API Framework
 
 Location:
 
@@ -325,7 +386,7 @@ More details:
 python_playwright_api_framework/README.md
 ```
 
-## Project 5: Selenium Java Framework
+## Project 6: Selenium Java Framework
 
 Location:
 
@@ -464,6 +525,7 @@ Typical screenshot locations:
 
 ```text
 java-playwright/target/screenshots
+javascript-playwright/screenshots/dev
 python-playwright/screenshots/dev
 python-playwright-enterprise-framework/reports/screenshots
 python_playwright_api_framework/screenshots/dev
@@ -497,6 +559,7 @@ Configuration files:
 
 ```text
 java-playwright/src/test/resources/configuration.properties
+javascript-playwright/src/configurations/dev.json
 python-playwright/src/configurations/dev.json
 python-playwright-enterprise-framework/config/config.yaml
 python_playwright_api_framework/configurations/dev.json
@@ -517,6 +580,13 @@ Python Playwright frameworks use `pytest-xdist`:
 
 ```bash
 pytest -n auto
+```
+
+The JavaScript Playwright framework uses Playwright Test workers:
+
+```bash
+cd javascript-playwright
+npm test
 ```
 
 The enterprise Python framework can also run with an explicit worker count:
@@ -548,6 +618,33 @@ The standard Python Playwright framework uses `pytest-rerunfailures`:
 --reruns 1 --reruns-delay 2
 ```
 
+The JavaScript Playwright framework uses Playwright Test retries configured in:
+
+```text
+javascript-playwright/playwright.config.js
+```
+
+## Generated Files And Git Ignore
+
+Runtime output is intentionally excluded from GitHub. The parent `.gitignore` already ignores generated folders used by the JavaScript Playwright project:
+
+```text
+javascript-playwright/test-results/
+javascript-playwright/reports/
+javascript-playwright/allure-results/
+javascript-playwright/logs/
+javascript-playwright/screenshots/
+javascript-playwright/downloads/
+```
+
+Verified with:
+
+```bash
+git status --short --ignored javascript-playwright
+```
+
+Git reports these folders with `!!`, so they will not be uploaded to GitHub unless force-added.
+
 ## CI/CD Readiness
 
 The frameworks are structured to be integrated with CI/CD tools such as:
@@ -575,9 +672,9 @@ Typical CI/CD workflow:
 |-----------------------|-----------------------------------------------|
 |	Browser Automation	|	Playwright, Selenium WebDriver				|
 |	API Automation		|	Playwright API testing						|
-|	Languages			|	Java, Python								|
-|	Test Frameworks		|	TestNG, Pytest								|
-|	Build Tools			|	Maven, pip									|
+|	Languages			|	Java, JavaScript, Python					|
+|	Test Frameworks		|	TestNG, Playwright Test, Pytest				|
+|	Build Tools			|	Maven, npm, pip								|
 |	Reporting			|	Allure										|
 |	Data Handling		|	JSON, Excel, CSV, YAML						|
 |	Logging				|	SLF4J, Logback, Python logging				|
@@ -664,13 +761,14 @@ Recommended review order:
 ```text
 1. Start with this main README
 2. Open java-playwright/README.md
-3. Open python-playwright/README.md
-4. Open python-playwright-enterprise-framework/README.md
-5. Open python_playwright_api_framework/README.md
-6. Open java-selenium/README.md
-7. Review framework structure and test examples
-8. Run one framework locally
-9. Generate Allure report
+3. Open javascript-playwright/README.md
+4. Open python-playwright/README.md
+5. Open python-playwright-enterprise-framework/README.md
+6. Open python_playwright_api_framework/README.md
+7. Open java-selenium/README.md
+8. Review framework structure and test examples
+9. Run one framework locally
+10. Generate Allure report
 ```
 
 ## Contact
