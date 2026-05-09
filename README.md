@@ -41,6 +41,7 @@ A generated sample showing a Herokuapp A/B Testing page beside a passing Java Pl
 | Python Playwright | Python | Playwright, Pytest, Allure | Fast and lightweight Playwright automation |
 | Python Playwright Enterprise | Python | Playwright, Pytest, PyYAML, Allure | Enterprise-style OrangeHRM business workflow automation |
 | Python Playwright API | Python | Playwright API, Pytest, Allure | REST API automation with request and response evidence |
+| JavaScript Playwright API | JavaScript | Playwright API, Playwright Test, npm, Allure | REST API automation with JavaScript service-layer design |
 | Selenium Framework | Java | Selenium WebDriver, TestNG, Maven, Allure | Selenium WebDriver and legacy automation support |
 
 ## Repository Structure
@@ -81,6 +82,15 @@ qa-automation-framework
 |   |-- requirements.txt
 |   |-- pytest.ini
 |   |-- conftest.py
+|   |-- configurations
+|   |-- services
+|   |-- tests
+|   `-- utilities
+|-- javascript_playwright_api_framework
+|   |-- README.md
+|   |-- package.json
+|   |-- playwright.config.js
+|   |-- fixtures.js
 |   |-- configurations
 |   |-- services
 |   |-- tests
@@ -386,7 +396,70 @@ More details:
 python_playwright_api_framework/README.md
 ```
 
-## Project 6: Selenium Java Framework
+## Project 6: JavaScript Playwright API Framework
+
+Location:
+
+```text
+javascript_playwright_api_framework
+```
+
+This framework demonstrates REST API automation using Playwright API testing with JavaScript, Playwright Test, JSON configuration, and Allure reporting.
+
+The framework targets the ReqRes demo API:
+
+```text
+https://reqres.in
+```
+
+Main highlights:
+
+- Playwright API testing with JavaScript
+- Playwright Test execution
+- Service-layer API client structure
+- ReqRes user management endpoint coverage
+- JSON-based environment configuration
+- Environment selection with `TB_ENV`
+- Tag-based execution for smoke and users tests
+- Parallel execution with Playwright workers
+- Playwright HTML reporting
+- Allure reporting
+- Request and response attachments in reports
+- Reusable utility layer for config and logging
+
+Run tests:
+
+```bash
+cd javascript_playwright_api_framework
+npm test
+```
+
+Run smoke tests:
+
+```bash
+npm run test:smoke
+```
+
+Run tests in parallel:
+
+```bash
+npm run test:parallel
+```
+
+Generate Allure report:
+
+```bash
+npm test
+npm run allure:serve
+```
+
+More details:
+
+```text
+javascript_playwright_api_framework/README.md
+```
+
+## Project 7: Selenium Java Framework
 
 Location:
 
@@ -517,6 +590,14 @@ pytest --alluredir=reports/allure-results
 allure serve reports/allure-results
 ```
 
+Example report command for the JavaScript API framework:
+
+```bash
+cd javascript_playwright_api_framework
+npm test
+npm run allure:serve
+```
+
 ## Screenshots
 
 Failure screenshots are captured automatically in UI frameworks when tests fail. The API framework also has a screenshot folder configured for future Playwright UI tests that use a `page` fixture.
@@ -529,6 +610,7 @@ javascript-playwright/screenshots/dev
 python-playwright/screenshots/dev
 python-playwright-enterprise-framework/reports/screenshots
 python_playwright_api_framework/screenshots/dev
+javascript_playwright_api_framework/screenshots/dev
 java-selenium/target/screenshots
 ```
 
@@ -563,6 +645,7 @@ javascript-playwright/src/configurations/dev.json
 python-playwright/src/configurations/dev.json
 python-playwright-enterprise-framework/config/config.yaml
 python_playwright_api_framework/configurations/dev.json
+javascript_playwright_api_framework/configurations/dev.json
 java-selenium/src/main/resources/configuration.properties
 ```
 
@@ -600,6 +683,13 @@ The Python API framework also supports `pytest-xdist`:
 ```bash
 cd python_playwright_api_framework
 pytest -n 2
+```
+
+The JavaScript API framework uses Playwright Test workers:
+
+```bash
+cd javascript_playwright_api_framework
+npm run test:parallel
 ```
 
 ## Retry Logic
@@ -765,10 +855,11 @@ Recommended review order:
 4. Open python-playwright/README.md
 5. Open python-playwright-enterprise-framework/README.md
 6. Open python_playwright_api_framework/README.md
-7. Open java-selenium/README.md
-8. Review framework structure and test examples
-9. Run one framework locally
-10. Generate Allure report
+7. Open javascript_playwright_api_framework/README.md
+8. Open java-selenium/README.md
+9. Review framework structure and test examples
+10. Run one framework locally
+11. Generate Allure report
 ```
 
 ## Contact

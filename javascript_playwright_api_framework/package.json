@@ -1,0 +1,23 @@
+{
+  "name": "javascript-playwright-api-framework",
+  "version": "1.0.0",
+  "description": "Playwright JavaScript API automation framework for ReqRes API testing.",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:dev": "cross-env TB_ENV=dev playwright test",
+    "test:smoke": "playwright test --grep \"@smoke\"",
+    "test:regression": "playwright test --grep \"@regression\"",
+    "test:users": "playwright test --grep \"@users\"",
+    "test:parallel": "playwright test --workers=2",
+    "report": "playwright show-report reports/playwright-report",
+    "allure:generate": "allure generate reports/allure-results -o reports/allure-report --clean",
+    "allure:serve": "allure serve reports/allure-results"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.0",
+    "allure-playwright": "^3.2.1",
+    "allure-js-commons": "^3.2.1",
+    "cross-env": "^7.0.3"
+  }
+}
