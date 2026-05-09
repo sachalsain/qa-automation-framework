@@ -1,0 +1,11 @@
+{
+  "employee": {
+    "first_name": "Test",
+    "middle_name": "Automation",
+    "last_name": "User",
+    "employee_id_prefix": "AUTO"
+  },
+  "search": {
+    "employee_name": "Test Automation User"
+  }
+}

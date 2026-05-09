@@ -38,6 +38,7 @@ A generated sample showing a Herokuapp A/B Testing page beside a passing Java Pl
 |-----------|----------|---------|----------|
 | Java Playwright | Java | Playwright, TestNG, Maven, Allure | Enterprise-style Playwright UI automation |
 | JavaScript Playwright | JavaScript | Playwright Test, npm, Allure | Modern Playwright UI automation with JavaScript |
+| JavaScript Playwright Enterprise | JavaScript | Playwright Test, npm, YAML, dotenv, Allure | Enterprise-style OrangeHRM business workflow automation |
 | Python Playwright | Python | Playwright, Pytest, Allure | Fast and lightweight Playwright automation |
 | Python Playwright Enterprise | Python | Playwright, Pytest, PyYAML, Allure | Enterprise-style OrangeHRM business workflow automation |
 | Python Playwright API | Python | Playwright API, Pytest, Allure | REST API automation with request and response evidence |
@@ -61,6 +62,16 @@ qa-automation-framework
 |   |-- tests
 |   |-- data
 |   `-- uploads
+|-- javascript-playwright-enterprise-framework
+|   |-- README.md
+|   |-- package.json
+|   |-- playwright.config.js
+|   |-- fixtures.js
+|   |-- config
+|   |-- pages
+|   |-- tests
+|   |-- test_data
+|   `-- utils
 |-- python-playwright
 |   |-- README.md
 |   |-- requirements.txt
@@ -119,6 +130,7 @@ qa-automation-framework
 - Logging support
 - File upload and download test coverage
 - OrangeHRM business workflow automation
+- JavaScript enterprise OrangeHRM workflow automation
 - REST API automation with Playwright request contexts
 - API request and response evidence in Allure reports
 - CI/CD-ready project structure
@@ -219,7 +231,72 @@ More details:
 javascript-playwright/README.md
 ```
 
-## Project 3: Python Playwright Framework
+## Project 3: JavaScript Playwright Enterprise Framework
+
+Location:
+
+```text
+javascript-playwright-enterprise-framework
+```
+
+This framework demonstrates enterprise-style browser automation using Playwright Test with JavaScript, YAML configuration, environment-based credentials, and Allure reporting.
+
+The framework targets the OrangeHRM demo application:
+
+```text
+https://opensource-demo.orangehrmlive.com/
+```
+
+Main highlights:
+
+- Playwright Test with JavaScript
+- Page Object Model
+- OrangeHRM business workflow automation
+- Login, Dashboard, Admin, and PIM module coverage
+- Data-driven testing using JSON
+- YAML-based configuration
+- Environment-based credential management with `.env`
+- Tag-based execution for smoke, regression, login, admin, and PIM tests
+- Parallel execution with Playwright workers
+- Screenshot, trace, and video capture on failure
+- Playwright HTML reporting
+- Allure reporting
+- Reusable utility layer for config, data, logging, and screenshots
+
+Run tests:
+
+```bash
+cd javascript-playwright-enterprise-framework
+npm test
+```
+
+Run smoke tests:
+
+```bash
+npm run test:smoke
+```
+
+Run tests in parallel:
+
+```bash
+npx playwright test --workers=2
+```
+
+Generate reports:
+
+```bash
+npm test
+npm run report
+allure serve reports/allure-results
+```
+
+More details:
+
+```text
+javascript-playwright-enterprise-framework/README.md
+```
+
+## Project 4: Python Playwright Framework
 
 Location:
 
@@ -269,7 +346,7 @@ More details:
 python-playwright/README.md
 ```
 
-## Project 4: Python Playwright Enterprise Framework
+## Project 5: Python Playwright Enterprise Framework
 
 Location:
 
@@ -334,7 +411,7 @@ More details:
 python-playwright-enterprise-framework/README.md
 ```
 
-## Project 5: Python Playwright API Framework
+## Project 6: Python Playwright API Framework
 
 Location:
 
@@ -396,7 +473,7 @@ More details:
 python_playwright_api_framework/README.md
 ```
 
-## Project 6: JavaScript Playwright API Framework
+## Project 7: JavaScript Playwright API Framework
 
 Location:
 
@@ -459,7 +536,7 @@ More details:
 javascript_playwright_api_framework/README.md
 ```
 
-## Project 7: Selenium Java Framework
+## Project 8: Selenium Java Framework
 
 Location:
 
@@ -544,6 +621,7 @@ The frameworks include examples for common web automation scenarios such as:
 - OrangeHRM login workflows
 - OrangeHRM Admin user search
 - OrangeHRM PIM employee management
+- JavaScript OrangeHRM enterprise workflow coverage
 - ReqRes user API list, create, update, and delete flows
 - API response status, schema, and contract validation
 
@@ -598,6 +676,15 @@ npm test
 npm run allure:serve
 ```
 
+Example report command for the JavaScript enterprise framework:
+
+```bash
+cd javascript-playwright-enterprise-framework
+npm test
+npm run report
+allure serve reports/allure-results
+```
+
 ## Screenshots
 
 Failure screenshots are captured automatically in UI frameworks when tests fail. The API framework also has a screenshot folder configured for future Playwright UI tests that use a `page` fixture.
@@ -607,6 +694,7 @@ Typical screenshot locations:
 ```text
 java-playwright/target/screenshots
 javascript-playwright/screenshots/dev
+javascript-playwright-enterprise-framework/reports/screenshots
 python-playwright/screenshots/dev
 python-playwright-enterprise-framework/reports/screenshots
 python_playwright_api_framework/screenshots/dev
@@ -642,6 +730,7 @@ Configuration files:
 ```text
 java-playwright/src/test/resources/configuration.properties
 javascript-playwright/src/configurations/dev.json
+javascript-playwright-enterprise-framework/config/config.yaml
 python-playwright/src/configurations/dev.json
 python-playwright-enterprise-framework/config/config.yaml
 python_playwright_api_framework/configurations/dev.json
@@ -670,6 +759,13 @@ The JavaScript Playwright framework uses Playwright Test workers:
 ```bash
 cd javascript-playwright
 npm test
+```
+
+The JavaScript enterprise framework uses Playwright Test workers:
+
+```bash
+cd javascript-playwright-enterprise-framework
+npx playwright test --workers=2
 ```
 
 The enterprise Python framework can also run with an explicit worker count:
@@ -714,6 +810,12 @@ The JavaScript Playwright framework uses Playwright Test retries configured in:
 javascript-playwright/playwright.config.js
 ```
 
+The JavaScript enterprise framework uses Playwright Test execution settings configured in:
+
+```text
+javascript-playwright-enterprise-framework/playwright.config.js
+```
+
 ## Generated Files And Git Ignore
 
 Runtime output is intentionally excluded from GitHub. The parent `.gitignore` already ignores generated folders used by the JavaScript Playwright project:
@@ -727,10 +829,21 @@ javascript-playwright/screenshots/
 javascript-playwright/downloads/
 ```
 
-Verified with:
+The JavaScript enterprise project also excludes generated runtime output:
+
+```text
+javascript-playwright-enterprise-framework/node_modules/
+javascript-playwright-enterprise-framework/test-results/
+javascript-playwright-enterprise-framework/reports/
+javascript-playwright-enterprise-framework/.env
+javascript-playwright-enterprise-framework/*.log
+```
+
+Verify ignored runtime output with:
 
 ```bash
 git status --short --ignored javascript-playwright
+git status --short --ignored javascript-playwright-enterprise-framework
 ```
 
 Git reports these folders with `!!`, so they will not be uploaded to GitHub unless force-added.
@@ -767,8 +880,8 @@ Typical CI/CD workflow:
 |	Build Tools			|	Maven, npm, pip								|
 |	Reporting			|	Allure										|
 |	Data Handling		|	JSON, Excel, CSV, YAML						|
-|	Logging				|	SLF4J, Logback, Python logging				|
-|	Parallel Execution	|	TestNG, pytest-xdist						|
+|	Logging				|	SLF4J, Logback, Python logging, JavaScript logging utilities |
+|	Parallel Execution	|	TestNG, pytest-xdist, Playwright workers	|
 |	Retry Logic			|	TestNG IRetryAnalyzer, pytest-rerunfailures |
 
 ## Why This Portfolio Matters
@@ -852,14 +965,15 @@ Recommended review order:
 1. Start with this main README
 2. Open java-playwright/README.md
 3. Open javascript-playwright/README.md
-4. Open python-playwright/README.md
-5. Open python-playwright-enterprise-framework/README.md
-6. Open python_playwright_api_framework/README.md
-7. Open javascript_playwright_api_framework/README.md
-8. Open java-selenium/README.md
-9. Review framework structure and test examples
-10. Run one framework locally
-11. Generate Allure report
+4. Open javascript-playwright-enterprise-framework/README.md
+5. Open python-playwright/README.md
+6. Open python-playwright-enterprise-framework/README.md
+7. Open python_playwright_api_framework/README.md
+8. Open javascript_playwright_api_framework/README.md
+9. Open java-selenium/README.md
+10. Review framework structure and test examples
+11. Run one framework locally
+12. Generate Allure report
 ```
 
 ## Contact

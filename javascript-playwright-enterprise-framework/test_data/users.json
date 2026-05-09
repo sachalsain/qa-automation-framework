@@ -1,0 +1,37 @@
+{
+  "valid_user": {
+    "username": "Admin",
+    "password": "admin123",
+    "expected_page": "Dashboard"
+  },
+  "invalid_users": [
+    {
+      "scenario": "invalid_username",
+      "username": "WrongUser",
+      "password": "admin123",
+      "expected_error": "Invalid credentials"
+    },
+    {
+      "scenario": "invalid_password",
+      "username": "Admin",
+      "password": "wrongpass",
+      "expected_error": "Invalid credentials"
+    },
+    {
+      "scenario": "empty_username",
+      "username": "",
+      "password": "admin123",
+      "expected_error": "Required"
+    },
+    {
+      "scenario": "empty_password",
+      "username": "Admin",
+      "password": "",
+      "expected_error": "Required"
+    }
+  ],
+  "admin_search": {
+    "username": "Admin",
+    "role": "Admin"
+  }
+}
